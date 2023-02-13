@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class LeadController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,9 @@ class LeadController extends Controller
      */
     public function index()
     {
-        permission_check('lead-management');
+        permission_check('user-management');
 
-        return view('lead.index');
+        return view('user.index');
     }
 
     /**
@@ -59,9 +58,7 @@ class LeadController extends Controller
      */
     public function edit($id)
     {
-        return view('lead.edit', [
-            'lead_id' => $id
-        ]);
+        //
     }
 
     /**

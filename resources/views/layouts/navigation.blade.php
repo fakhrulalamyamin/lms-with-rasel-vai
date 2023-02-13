@@ -15,9 +15,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('lead.index')" :active="request()->routeIs('lead.index')">
-                        {{ __('Leads') }}
-                    </x-nav-link>
+                    @can('lead-management')
+                        <x-nav-link :href="route('lead.index')" :active="request()->routeIs('lead.index')">
+                            {{ __('Leads') }}
+                        </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -44,6 +46,12 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
+
+                        @can('user-management')
+                            <x-dropdown-link :href="route('user.index')">
+                                {{ __('Users') }}
+                            </x-dropdown-link>
+                        @endcan
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
